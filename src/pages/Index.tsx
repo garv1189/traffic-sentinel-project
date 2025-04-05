@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -19,9 +18,18 @@ import {
   detectObjectsInVideo, 
   analyzeForViolations, 
   detectLicensePlate,
-  extractVideoFrame
+  extractVideoFrame,
+  sendViolationTicket
 } from '@/services/detection';
 import { toast } from 'sonner';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('upload');
@@ -200,7 +208,6 @@ const Index = () => {
     setSentTickets([...sentTickets, ticket]);
   };
 
-  // Move to the ticket tab when all required data is available
   useEffect(() => {
     if (selectedViolation && licensePlate && violationImage && activeTab === 'analyze') {
       setTimeout(() => {
@@ -427,7 +434,6 @@ const Index = () => {
   );
 };
 
-// Helper function for formatting timestamps
 function formatTimestamp(seconds: number): string {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);

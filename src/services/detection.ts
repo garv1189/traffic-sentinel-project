@@ -1,5 +1,5 @@
 
-import { DetectedObject, LicensePlateData, ViolationData } from '@/types';
+import { DetectedObject, LicensePlateData, ViolationData, ViolationTicket } from '@/types';
 import { toast } from 'sonner';
 
 // This is a placeholder service that would integrate with a real ML API
